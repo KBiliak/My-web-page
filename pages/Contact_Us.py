@@ -3,7 +3,7 @@ from send_email import send_email
 
 st.header("Contact me")
 
-with st.form(key="email_form"):
+with st.form(key="email_form", clear_on_submit=True):
     user_email = st.text_input("Your email address")
     raw_message = st.text_area("Your message")
     message = f"""\
@@ -13,7 +13,7 @@ From: {user_email}
 """
 
     button = st.form_submit_button("Submit")
-    print(button)
+    print("Button submit activated =", button)
     if button:
         send_email(message)
         st.info("Your email was sent successfully!")
